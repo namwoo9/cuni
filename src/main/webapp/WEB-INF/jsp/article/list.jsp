@@ -49,7 +49,7 @@
 			<tr>
 				<th>ID</th>
 				<th>등록날짜</th>
-				<th>작성자</th>
+				<th>닉네임</th>
 				<th>제목</th>
 				<th>댓글</th>
 				<th>비고</th>
@@ -59,8 +59,8 @@
 			<c:forEach var="article" items="${pagedListRs.list}">
 				<tr>
 					<td><c:out value="${article.id}" /></td>
-					<td><c:out value="${article.extra.writerName}" /></td>
 					<td><c:out value="${article.regDate}" /></td>
+					<td><c:out value="${article.extra.writerName}" /></td>
 					<td><a href="detail?id=${article.id}&boardId=${param.boardId}"><c:out
 								value="${article.title}" /></a></td>
 					<td><c:out value="${article.extra.repliesCount}" /></td>

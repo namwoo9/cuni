@@ -8,11 +8,16 @@
 
 <script>
 	function modifyFormSubmited(form) {
-
 		form.name.value = form.name.value.trim();
 
 		if (form.name.value.length == 0) {
-			alert('이름을 입력해주세요');
+			alert('닉네임을 입력해주세요');
+			form.name.focus();
+			return false;
+		}
+
+		if (form.name.value.length < 2) {
+			alert('두 글자 이상 입력해주세요');
 			form.name.focus();
 			return false;
 		}
@@ -68,7 +73,7 @@
 			</colgroup>
 			<tbody>
 				<tr>
-					<th>이름</th>
+					<th>닉네임</th>
 					<td><input type="text" name="name" value="${member.name}"></td>
 				</tr>
 				<tr>
@@ -81,11 +86,13 @@
 				<!-- 				</tr> -->
 				<tr>
 					<th>변경할 비밀번호</th>
-					<td><input type="password" name="afterPw" maxlength="10"></td>
+					<td><input type="password" name="afterPw" maxlength="10"
+						placeholder="변경할 비밀번호"></td>
 				</tr>
 				<tr>
 					<th>비밀번호 확인</th>
-					<td><input type="password" name="checkPw" maxlength="10"></td>
+					<td><input type="password" name="checkPw" maxlength="10"
+						placeholder="변경할 비밀번호 확인"></td>
 				</tr>
 
 				<tr>

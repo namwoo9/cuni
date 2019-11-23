@@ -15,7 +15,7 @@
 
 		if (form.name.value.length == 0) {
 
-			alert('이름을 입력해주세요.');
+			alert('닉네임을 입력해주세요.');
 
 			form.name.focus();
 
@@ -46,7 +46,7 @@
 
 		if (form.name.value.length == 0) {
 
-			alert('이름을 입력해주세요.');
+			alert('닉네임을 입력해주세요.');
 
 			form.name.focus();
 
@@ -101,8 +101,8 @@
 				</colgroup>
 				<tbody>
 					<tr>
-						<th>이름</th>
-						<td><input type="text" name="name" placeholder="이름"></td>
+						<th>닉네임</th>
+						<td><input type="text" name="name" placeholder="닉네임"></td>
 					</tr>
 					<tr>
 						<th>이메일</th>
@@ -133,8 +133,8 @@
 				</colgroup>
 				<tbody>
 					<tr>
-						<th>이름</th>
-						<td><input type="text" name="name" placeholder="이름"></td>
+						<th>닉네임</th>
+						<td><input type="text" name="name" placeholder="닉네임"></td>
 					</tr>
 					<tr>
 						<th>아이디</th>

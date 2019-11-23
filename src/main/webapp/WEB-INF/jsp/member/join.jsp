@@ -35,7 +35,6 @@
 			alert('4글자 이상 입력해주세요');
 			form.loginId.focus();
 			return false;
-
 		}
 
 		form.loginPw.value = form.loginPw.value.trim();
@@ -52,7 +51,13 @@
 		}
 		form.name.value = form.name.value.trim();
 		if (form.name.value.length == 0) {
-			alert('이름을 입력해주세요.');
+			alert('닉네임을 입력해주세요.');
+			form.name.focus();
+			return;
+		}
+
+		if (form.name.value.length < 2) {
+			alert('두 글자 이상 입력해주세요.');
 			form.name.focus();
 			return;
 		}
@@ -110,9 +115,9 @@
 						placeholder="비밀번호 확인을 입력해주세요." maxlength="10"></td>
 				</tr>
 				<tr>
-					<th>이름</th>
+					<th>닉네임</th>
 					<td><input type="text" name="name" autocomplete="off"
-						placeholder="이름을 입력해주세요."></td>
+						placeholder="닉네임을 입력해주세요."></td>
 				</tr>
 				<tr>
 					<th>이메일</th>

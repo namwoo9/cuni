@@ -61,7 +61,7 @@
 				<td><c:out value="${article.regDate}" /></td>
 			</tr>
 			<tr>
-				<th>작성자</th>
+				<th>닉네임</th>
 				<td><c:out value="${article.extra.writerName}" /></td>
 			</tr>
 			<tr>

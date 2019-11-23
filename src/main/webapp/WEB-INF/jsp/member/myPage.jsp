@@ -14,7 +14,7 @@
 		</colgroup>
 		<tbody>
 			<tr>
-				<th>이름</th>
+				<th>닉네임</th>
 				<td><c:out value="${member.name}" escapeXml="true" /></td>
 			</tr>
 			<tr>
