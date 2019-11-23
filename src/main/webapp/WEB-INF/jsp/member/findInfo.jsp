@@ -106,7 +106,7 @@
 					</tr>
 					<tr>
 						<th>이메일</th>
-						<td><input type="text" name="email" placeholder="이메일"></td>
+						<td><input type="email" name="email" placeholder="이메일"></td>
 					</tr>
 					<tr>
 						<th></th>
@@ -142,7 +142,7 @@
 					</tr>
 					<tr>
 						<th>이메일</th>
-						<td><input type="text" name="email" placeholder="이메일"></td>
+						<td><input type="email" name="email" placeholder="이메일"></td>
 					</tr>
 					<tr>
 						<th></th>

@@ -59,11 +59,12 @@
 						<th></th>
 						<td><input class="btn-a" type="submit" value="수정"> <input
 							class="btn-a" type="button" value="취소"
-							onclick="location.href = './detail?id=${article.id}';"></td>
+							onclick="location.href = './list?boardId=1';"></td>
 					</tr>
 				</tbody>
 			</table>
 		</form>
 	</div>
-
+	<!-- 	<input class="btn-a" type="button" value="취소" -->
+	<%-- 		onclick="location.href = './detail?id=${article.id}';"> --%>
 	<%@ include file="../part/foot.jspf"%>

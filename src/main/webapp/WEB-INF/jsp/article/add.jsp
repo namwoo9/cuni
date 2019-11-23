@@ -69,11 +69,13 @@
 				<tbody>
 					<tr>
 						<th>제목</th>
-						<td><input type="text" name="title" placeholder="제목"></td>
+						<td><input type="text" name="title" placeholder="제목"
+							autocomplete="off"></td>
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td><textarea placeholder="내용" rows="10" name="body"></textarea></td>
+						<td><textarea placeholder="내용" rows="10" name="body"
+								autocomplete="off"></textarea></td>
 					</tr>
 					<tr>
 						<th></th>

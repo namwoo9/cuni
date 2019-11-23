@@ -2,8 +2,6 @@ package com.sbs.cuni.dto;
 
 import java.util.Map;
 
-import org.springframework.web.util.HtmlUtils;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

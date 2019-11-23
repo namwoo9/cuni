@@ -3,49 +3,54 @@
 <%@ page import="java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<c:set var="pageTitle" value="게시물 수정" />
+<c:set var="pageTitle" value="회원정보 수정" />
 <%@ include file="../part/head.jspf"%>
 
 <script>
 	function modifyFormSubmited(form) {
-		var emailP = /\w+@\w+\.\w+\.?\w*/;
 
 		form.name.value = form.name.value.trim();
+
 		if (form.name.value.length == 0) {
-			alert('이름을 입력해주세요.');
+			alert('이름을 입력해주세요');
 			form.name.focus();
-			return;
+			return false;
 		}
 
 		form.email.value = form.email.value.trim();
+
 		if (form.email.value.length == 0) {
-			alert('이메일을 입력해주세요.');
+			alert('이메일을 입력해주세요');
 			form.email.focus();
-			return;
+			return false;
 		}
 
-		if (!email.match(emailP)) {
-			alert("이메일 형식에 맞지 않습니다.");
-			return false;
-		}
-		form.beforePw.value = form.beforePw.value.trim();
-		if (form.beforePw.value.length == 0) {
-			alert('기존 비밀번호를 입력하세요.');
-			return false;
-		}
 		form.afterPw.value = form.afterPw.value.trim();
+
 		if (form.afterPw.value.length == 0) {
-			alert('변경할 비밀번호를 입력하세요.');
+			alert('변경할 비밀번호를 입력해주세요');
+			form.afterPw.value = "";
+			form.afterPw.focus();
 			return false;
-		}
-		form.checkPw.value = form.checkPw.value.trim();
-		if (form.checkPw.value.length == 0) {
-			alert('변경할 비밀번호 확인란을 입력하세요.');
+		} else if (form.afterPw.value.length <= 3) {
+			alert('4자리 이상 입력해주세요');
+			form.afterPw.value = "";
+			form.afterPw.focus();
 			return false;
 		}
 
-		if (form.checkPw.value != form.afterPw.value) {
-			alert('변경할 비밀번호가 일치하지 않습니다.');
+		form.checkPw.value = form.checkPw.value.trim();
+
+		if (form.checkPw.value.length == 0) {
+			alert('비밀번호 확인 입력해주세요');
+			form.checkPw.focus();
+			return false;
+		}
+
+		if (form.afterPw.value != form.checkPw.value) {
+			alert('비밀번호 확인이 비밀번호와 일치하지 않습니다.');
+			form.checkPw.value = "";
+			form.checkPw.focus();
 			return false;
 		}
 
@@ -68,7 +73,7 @@
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td><input type="text" name="email" value="${member.email}"></td>
+					<td><input type="email" name="email" value="${member.email}"></td>
 				</tr>
 				<!-- 				<tr> -->
 				<!-- 					<th>기존 비밀번호</th> -->
@@ -76,13 +81,13 @@
 				<!-- 				</tr> -->
 				<tr>
 					<th>변경할 비밀번호</th>
-					<td><input type="password" name="afterPw"></td>
+					<td><input type="password" name="afterPw" maxlength="10"></td>
 				</tr>
 				<tr>
 					<th>비밀번호 확인</th>
-					<td><input type="password" name="checkPw"></td>
+					<td><input type="password" name="checkPw" maxlength="10"></td>
 				</tr>
-				
+
 				<tr>
 					<th>수정</th>
 					<td><input class="btn-a" type="submit" value="수정"> <input

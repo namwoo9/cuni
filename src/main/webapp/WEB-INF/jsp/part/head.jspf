@@ -100,8 +100,8 @@
 								class="block btn-a">글 삭제</a></li>
 						</c:if>
 					</c:if>
-					<li class="cell margin-right-size-1"><a href="/member/myPage"
-						class="block btn-a">마이페이지</a></li>
+<!-- 					<li class="cell margin-right-size-1"><a href="/member/myPage" -->
+<!-- 						class="block btn-a">마이페이지</a></li> -->
 					<li class="cell margin-right-size-1"><a
 						href="/member/modify?id=${member.id}" class="block btn-a">회원정보수정</a></li>
 					<li class="cell margin-right-size-1"><a

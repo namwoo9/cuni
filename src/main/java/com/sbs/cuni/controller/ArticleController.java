@@ -20,10 +20,7 @@ import com.sbs.cuni.dto.Board;
 import com.sbs.cuni.dto.Member;
 import com.sbs.cuni.service.ArticleService;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Controller
-@Slf4j
 public class ArticleController {
 	@Autowired
 	private ArticleService articleService;

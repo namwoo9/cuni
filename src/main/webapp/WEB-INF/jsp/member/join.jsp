@@ -19,11 +19,25 @@
 		var emailP = /\w+@\w+\.\w+\.?\w*/;
 
 		form.loginId.value = form.loginId.value.trim();
-		if (form.loginId.value.length == 0) {
-			alert('아이디를 입력해주세요.');
-			form.loginId.focus();
-			return;
+
+		for (var i = 0; i < form.loginId.value.length; i++) {
+			ch = form.loginId.value.charAt(i)
+			if (!(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z')) {
+				alert('아이디는 영문만 입력 가능합니다.');
+				form.loginId.value = '';
+				form.loginId.focus();
+				return false;
+			}
 		}
+		// 	 숫자도 가능하게 하려면	!(ch >= '0' && ch <= '9')
+
+		if (form.loginId.value.length <= 3) {
+			alert('4글자 이상 입력해주세요');
+			form.loginId.focus();
+			return false;
+
+		}
+
 		form.loginPw.value = form.loginPw.value.trim();
 		if (form.loginPw.value.length == 0) {
 			alert('비밀번호를 입력해주세요.');
@@ -88,12 +102,12 @@
 				<tr>
 					<th>비밀번호</th>
 					<td><input type="password" name="loginPw"
-						placeholder="비밀번호를 입력해주세요."></td>
+						placeholder="비밀번호를 입력해주세요." maxlength="10"></td>
 				</tr>
 				<tr>
 					<th>비밀번호 확인</th>
 					<td><input type="password" name="loginPwConfirm"
-						placeholder="비밀번호 확인을 입력해주세요."></td>
+						placeholder="비밀번호 확인을 입력해주세요." maxlength="10"></td>
 				</tr>
 				<tr>
 					<th>이름</th>
@@ -102,7 +116,8 @@
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td><input type="text" name="email" placeHolder="이메일을 입력해주세요."></td>
+					<td><input type="email" name="email"
+						placeHolder="이메일을 입력해주세요."></td>
 				</tr>
 				<tr>
 					<th>가입</th>

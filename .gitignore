@@ -1,7 +1,10 @@
 .mvn/
 mvnw
 mvnw.cmd
+<<<<<<< HEAD
 cuni/
+=======
+>>>>>>> 83ced8525e46676ec4c2c16a0556241e813ffaa0
 
 HELP.md
 target/

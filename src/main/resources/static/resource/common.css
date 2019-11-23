@@ -119,7 +119,7 @@ html, body {
 }
 
 .table-common table input[type="text"], .table-common table input[type="password"],
-	.table-common table textarea {
+	.table-common table input[type="email"], .table-common table textarea {
 	width: 90%;
 	padding: 10px;
 	font-size: 1rem;
