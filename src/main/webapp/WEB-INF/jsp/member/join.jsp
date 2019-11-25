@@ -22,8 +22,9 @@
 
 		for (var i = 0; i < form.loginId.value.length; i++) {
 			ch = form.loginId.value.charAt(i)
-			if (!(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z')) {
-				alert('아이디는 영문만 입력 가능합니다.');
+			if (!(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z')
+					&& !(ch >= '0' && ch <= '9')) {
+				alert('아이디는 영문과 숫자만 입력 가능합니다.');
 				form.loginId.value = '';
 				form.loginId.focus();
 				return false;
@@ -79,6 +80,25 @@
 			return;
 		}
 
+		for (var i = 0; i < form.name.value.length; i++) {
+			ch = form.name.value.charAt(i)
+			if (!(ch >= '가' && ch <= '힣') && !(ch >= 'a' && ch <= 'z')
+					&& !(ch >= 'A' && ch <= 'Z') && !(ch >= '0' && ch <= '9')) {
+				alert('닉네임에 특수문자를 사용하실 수 없습니다.');
+				form.name.value = '';
+				form.name.focus();
+				return false;
+			}
+		}
+		// 		var kor = /^[가-힣]+$/;
+		// 		var eng = /^[a-zA-Z]{4,10}$/;
+		// 		if (eng.test(form.name.value)) {
+		// 			alert('영어는 6글자 이하로 적어주세요'');
+		// 			form.name.value = '';
+		// 			form.name.focus();
+		// 			return false;
+		// 		}
+
 		if (form.name.value.length < 2) {
 			alert('2자리 이상 입력해주세요.');
 			form.name.value = "";
@@ -114,27 +134,27 @@
 				<tr>
 					<th>아이디</th>
 					<td><input type="text" name="loginId" autocomplete="off"
-						autofocus="autofocus" placeholder="아이디를 입력해주세요."></td>
+						autofocus="autofocus" placeholder="아이디를 입력해주세요." maxlength="12"></td>
 				</tr>
 				<tr>
 					<th>비밀번호</th>
 					<td><input type="password" name="loginPw"
-						placeholder="비밀번호를 입력해주세요." maxlength="10"></td>
+						placeholder="비밀번호를 입력해주세요." maxlength="12"></td>
 				</tr>
 				<tr>
 					<th>비밀번호 확인</th>
 					<td><input type="password" name="loginPwConfirm"
-						placeholder="비밀번호 확인을 입력해주세요." maxlength="10"></td>
+						placeholder="비밀번호 확인을 입력해주세요." maxlength="12"></td>
 				</tr>
 				<tr>
 					<th>닉네임</th>
 					<td><input type="text" name="name" autocomplete="off"
-						placeholder="닉네임을 입력해주세요."></td>
+						placeholder="닉네임을 입력해주세요." maxlength="10"></td>
 				</tr>
 				<tr>
 					<th>이메일</th>
 					<td><input type="email" name="email"
-						placeHolder="이메일을 입력해주세요."></td>
+						placeHolder="이메일을 입력해주세요." maxlength="20"></td>
 				</tr>
 				<tr>
 					<th>가입</th>
