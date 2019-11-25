@@ -12,6 +12,9 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import com.sbs.cuni.dto.Member;
 import com.sbs.cuni.service.MemberService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Component("beforeActionInterceptor")
 public class BeforeActionInterceptor implements HandlerInterceptor {
 	@Autowired
@@ -30,6 +33,7 @@ public class BeforeActionInterceptor implements HandlerInterceptor {
 
 		if (session.getAttribute("loginedMemberId") != null) {
 			long loginedMemberId = (long) session.getAttribute("loginedMemberId");
+			System.out.println("loginedMemberIdsssssssssss : " + loginedMemberId);
 			Member member = memberService.getOne(loginedMemberId);
 			request.setAttribute("isLogined", true);
 			request.setAttribute("loginedMember", member);

@@ -31,8 +31,15 @@
 		}
 		// 	 숫자도 가능하게 하려면	!(ch >= '0' && ch <= '9')
 
+		if (form.loginId.value.length == 0) {
+			alert('아이디를 입력해주세요');
+			form.loginId.focus();
+			return false;
+		}
+
 		if (form.loginId.value.length <= 3) {
-			alert('4글자 이상 입력해주세요');
+			alert('4자리 이상 입력해주세요');
+			form.loginId.value = '';
 			form.loginId.focus();
 			return false;
 		}
@@ -43,12 +50,28 @@
 			form.loginPw.focus();
 			return;
 		}
+
+		form.loginPw.value = form.loginPw.value.trim();
+		if (form.loginPw.value.length < 4) {
+			alert('비밀번호를 4자리 이상 입력해주세요.');
+			form.loginPw.value = '';
+			form.loginPw.focus();
+			return;
+		}
 		form.loginPwConfirm.value = form.loginPwConfirm.value.trim();
 		if (form.loginPwConfirm.value.length == 0) {
 			alert('비밀번호 확인을 입력해주세요.');
 			form.loginPwConfirm.focus();
 			return;
 		}
+
+		if (form.loginPw.value != form.loginPwConfirm.value) {
+			alert('비밀번호가 같지 않습니다.');
+			form.loginPwConfirm.value = "";
+			form.loginPwConfirm.focus();
+			return;
+		}
+
 		form.name.value = form.name.value.trim();
 		if (form.name.value.length == 0) {
 			alert('닉네임을 입력해주세요.');
@@ -57,20 +80,9 @@
 		}
 
 		if (form.name.value.length < 2) {
-			alert('두 글자 이상 입력해주세요.');
+			alert('2자리 이상 입력해주세요.');
+			form.name.value = "";
 			form.name.focus();
-			return;
-		}
-		form.loginPw.value = form.loginPw.value.trim();
-		if (form.loginPw.value.length < 4) {
-			alert('비밀번호를 4자 이상 입력해주세요.');
-			form.loginPw.focus();
-			return;
-		}
-		if (form.loginPw.value != form.loginPwConfirm.value) {
-			alert('비밀번호가 같지 않습니다.');
-			form.loginPwConfirm.value = "";
-			form.loginPwConfirm.focus();
 			return;
 		}
 

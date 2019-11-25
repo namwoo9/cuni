@@ -17,7 +17,7 @@
 		}
 
 		if (form.name.value.length < 2) {
-			alert('두 글자 이상 입력해주세요');
+			alert('2자리 이상 입력해주세요');
 			form.name.focus();
 			return false;
 		}
@@ -53,7 +53,7 @@
 		}
 
 		if (form.afterPw.value != form.checkPw.value) {
-			alert('비밀번호 확인이 비밀번호와 일치하지 않습니다.');
+			alert('변경할 비밀번호와 일치하지 않습니다');
 			form.checkPw.value = "";
 			form.checkPw.focus();
 			return false;
