@@ -57,7 +57,7 @@
 		`name` = #{name},
 		emailAuthKey = #{authKey}
 	</insert>
-
+	<!-- &amp; name != '' -->
 	<update id="update" parameterType="map">
 		UPDATE member
 		<set>

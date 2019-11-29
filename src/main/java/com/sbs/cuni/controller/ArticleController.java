@@ -82,6 +82,14 @@ public class ArticleController {
 
 		Board board = articleService.getBoard(boardId);
 		model.addAttribute("board", board);
+		Member member = (Member) request.getAttribute("loginedMember");
+		if (boardId == 1 && member.getPermissionLevel() < 1) {
+
+			model.addAttribute("alertMsg", "권한이 없습니다.");
+			model.addAttribute("historyBack", true);
+
+			return "common/redirect";
+		}
 		return "article/add";
 	}
 
@@ -165,7 +173,7 @@ public class ArticleController {
 	public String doDelete(Model model, @RequestParam Map<String, Object> param, HttpSession session, long id,
 			long boardId, HttpServletRequest request) {
 		param.put("id", id);
-		
+
 		Member member = (Member) request.getAttribute("loginedMember");
 
 		if (boardId == 1 && member.getPermissionLevel() < 1) {

@@ -1,7 +1,9 @@
 package com.sbs.cuni.controller;
 
 import java.util.Map;
+import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -113,14 +115,53 @@ public class MemberController {
 
 	@RequestMapping("/member/doModify")
 	@ResponseBody
-	public String doModify(Model model, @RequestParam Map<String, Object> param, HttpSession session) {
+	public String doModify(Model model, @RequestParam Map<String, Object> param, HttpSession session,
+			HttpServletRequest request) {
 		long loginedMemberId = (long) session.getAttribute("loginedMemberId");
 		param.put("id", loginedMemberId);
+
+		String name = request.getParameter("name");
+		System.out.println("name : " + name);
+//		String name = request.getParameter("name");
+//
+//		if (name == null) {
+//			response.getWriter().append("<script> alert('title을 입력해주세요.'); history.back(); </script>");
+//			return name;
+//		}
+//
+		name = name.trim();
+//
+//		if (name.length() == 0 && name.matches("[0-9|a-z|A-Z|가-힣|]*")) {
+//			response.getWriter().append("<script> alert('title을 입력해주세요.'); history.back(); </script>");
+//			return name;
+//		}
+		StringBuilder sb2 = new StringBuilder();
+		if (name.length() == 0) {
+			sb2.append("<script>");
+			sb2.append("alert('닉네임을 입력해주세요');");
+			sb2.append("history.back();");
+			sb2.append("</script>");
+			return sb2.toString();
+		}
+		if (!Pattern.matches("^[0-9|a-z|A-Z|가-힣|]*$", name)) {
+			sb2.append("<script>");
+			sb2.append("alert('특수문자는 사용할 수 없습니다.');");
+			sb2.append("history.back();");
+			sb2.append("</script>");
+			return sb2.toString();
+		}
+
+		if (name.length() <= 1) {
+			sb2.append("<script>");
+			sb2.append("alert('닉네임은 2자리 이상 입력해주세요');");
+			sb2.append("history.back();");
+			sb2.append("</script>");
+			return sb2.toString();
+		}
 
 		Map<String, Object> updateRs = memberService.update(param);
 
 		StringBuilder sb = new StringBuilder();
-
 		sb.append("<script>");
 
 		String msg = (String) updateRs.get("msg");
@@ -136,6 +177,11 @@ public class MemberController {
 		sb.append("</script>");
 
 		return sb.toString();
+	}
+
+	private void append(String string) {
+		// TODO Auto-generated method stub
+
 	}
 
 	@RequestMapping("member/confirm")

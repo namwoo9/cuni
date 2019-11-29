@@ -16,6 +16,17 @@
 			return false;
 		}
 
+		for (var i = 0; i < form.name.value.length; i++) {
+			ch = form.name.value.charAt(i)
+			if (!(ch >= '가' && ch <= '힣') && !(ch >= 'a' && ch <= 'z')
+					&& !(ch >= 'A' && ch <= 'Z') && !(ch >= '0' && ch <= '9')) {
+				alert('닉네임에 특수문자, 공백을 사용하실 수 없습니다.');
+				form.name.value = '';
+				form.name.focus();
+				return false;
+			}
+		}
+
 		if (form.name.value.length < 2) {
 			alert('2자리 이상 입력해주세요');
 			form.name.focus();
