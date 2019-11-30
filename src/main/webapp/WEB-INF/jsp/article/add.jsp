@@ -70,12 +70,12 @@
 					<tr>
 						<th>제목</th>
 						<td><input type="text" name="title" placeholder="제목"
-							autocomplete="off"></td>
+							autocomplete="off" maxlength="30	"></td>
 					</tr>
 					<tr>
 						<th>내용</th>
 						<td><textarea placeholder="내용" rows="10" name="body"
-								autocomplete="off"></textarea></td>
+								autocomplete="off" maxlength="2500"></textarea></td>
 					</tr>
 					<tr>
 						<th></th>

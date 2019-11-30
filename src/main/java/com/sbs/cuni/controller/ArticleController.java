@@ -172,18 +172,17 @@ public class ArticleController {
 	@RequestMapping("/article/doDelete")
 	public String doDelete(Model model, @RequestParam Map<String, Object> param, HttpSession session, long id,
 			long boardId, HttpServletRequest request) {
-		param.put("id", id);
+		long loginedMemberId = (long) session.getAttribute("loginedMemberId");
+		Map<String, Object> checkDeletePermmisionRs = articleService.checkDeletePermmision(id, loginedMemberId);
 
-		Member member = (Member) request.getAttribute("loginedMember");
-
-		if (boardId == 1 && member.getPermissionLevel() < 1) {
-
-			model.addAttribute("alertMsg", "권한이 없습니다.");
+		if (((String) checkDeletePermmisionRs.get("resultCode")).startsWith("F-")) {
+			model.addAttribute("alertMsg", ((String) checkDeletePermmisionRs.get("msg")));
 			model.addAttribute("historyBack", true);
 
 			return "common/redirect";
 		}
 
+		param.put("id", id);
 		Map<String, Object> deleteRs = articleService.delete(param);
 
 		String msg = (String) deleteRs.get("msg");

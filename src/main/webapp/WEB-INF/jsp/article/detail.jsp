@@ -91,7 +91,8 @@
 				</colgroup>
 				<thead>
 					<tr>
-						<th><input type="text" name="body" placeholder="내용"></th>
+						<th><input type="text" name="body" placeholder="내용"
+							maxlength="70" autocomplete="off"></th>
 						<th><input type="submit" name="submit-btn" value="댓글작성">
 					</tr>
 				</thead>

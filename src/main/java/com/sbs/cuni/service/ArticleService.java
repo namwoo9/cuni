@@ -36,5 +36,7 @@ public interface ArticleService {
 
 	public Map<String, Object> checkModifyPermmision(long id, long loginedMemberId);
 
+	public Map<String, Object> checkDeletePermmision(long id, long loginedMemberId);
+
 	public Board getBoard(long boardId);
 }

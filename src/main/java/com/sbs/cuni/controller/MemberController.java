@@ -20,7 +20,7 @@ import com.sbs.cuni.service.MemberService;
 public class MemberController {
 
 	@Autowired
-	MemberService memberService;
+	private MemberService memberService;
 
 	@RequestMapping("member/login")
 	public String showLogin() {
@@ -118,10 +118,11 @@ public class MemberController {
 	public String doModify(Model model, @RequestParam Map<String, Object> param, HttpSession session,
 			HttpServletRequest request) {
 		long loginedMemberId = (long) session.getAttribute("loginedMemberId");
+
 		param.put("id", loginedMemberId);
 
 		String name = request.getParameter("name");
-		System.out.println("name : " + name);
+
 //		String name = request.getParameter("name");
 //
 //		if (name == null) {
@@ -145,7 +146,7 @@ public class MemberController {
 		}
 		if (!Pattern.matches("^[0-9|a-z|A-Z|가-힣|]*$", name)) {
 			sb2.append("<script>");
-			sb2.append("alert('특수문자는 사용할 수 없습니다.');");
+			sb2.append("alert('특수문자와 자음은 사용할 수 없습니다.');");
 			sb2.append("history.back();");
 			sb2.append("</script>");
 			return sb2.toString();
@@ -158,6 +159,16 @@ public class MemberController {
 			sb2.append("</script>");
 			return sb2.toString();
 		}
+
+//		if (boardId == 2) {
+//
+//		} else {
+//			sb2.append("<script>");
+//			sb2.append("alert('권한이 없습니다.");
+//			sb2.append("history.back();");
+//			sb2.append("</script>");
+//			return sb2.toString();
+//		}
 
 		Map<String, Object> updateRs = memberService.update(param);
 

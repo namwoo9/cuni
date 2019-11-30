@@ -164,8 +164,8 @@ public class MemberServiceImpl implements MemberService {
 	public Map<String, Object> update(Map<String, Object> args) {
 
 		Map<String, Object> rs = new HashMap<String, Object>();
-		
-  		memberDao.update(args);
+
+		memberDao.update(args);
 
 		rs.put("resultCode", "S-1");
 
