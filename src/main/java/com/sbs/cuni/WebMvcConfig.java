@@ -36,6 +36,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 				.excludePathPatterns("/member/doSearchPw").excludePathPatterns("/article/list")
 				.excludePathPatterns("/article/getReplies").excludePathPatterns("/resource/**")
 				.excludePathPatterns("/");
+
 		// 로그인, 로그인처리, 가입, 가입 처리는 로그인 상태일 때 접근할 수 없다.
 		registry.addInterceptor(needToLogoutInterceptor).addPathPatterns("/member/login")
 				.addPathPatterns("/member/doLogin").addPathPatterns("/member/join").addPathPatterns("/member/doJoin");

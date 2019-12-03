@@ -75,11 +75,12 @@
 			<ul class="row">
 				<li class="cell margin-right-size-1"><a href="/"
 					class="block btn-a">홈</a></li>
-
+				<li class="cell margin-right-size-1"><a href="/chat/main"
+					class="block btn-a">실시간채팅</a></li>
 				<li class="cell margin-right-size-1"><a
-					href="/article/list?boardId=1" class="block btn-a">공지시항 글 리스트</a></li>
+					href="/article/list?boardId=1" class="block btn-a">공지시항</a></li>
 				<li class="cell margin-right-size-1"><a
-					href="/article/list?boardId=2" class="block btn-a">자유 게시판 글 리스트</a></li>
+					href="/article/list?boardId=2" class="block btn-a">자유게시판</a></li>
 
 				<c:if test="${isLogined}">
 					<c:if test="${loginedMember.permissionLevel > 0}">
@@ -87,7 +88,7 @@
 							href="/article/add?boardId=1" class="block btn-a">공지사항 글 작성</a></li>
 					</c:if>
 					<li class="cell margin-right-size-1"><a
-						href="/article/add?boardId=2" class="block btn-a">자유 게시판 글 작성</a></li>
+						href="/article/add?boardId=2" class="block btn-a">자유게시판 글 작성</a></li>
 					<c:if
 						test="${loginedMemberId == article.memberId && isArticleModifyAvailable && param.id != null}">
 						<li class="cell margin-right-size-1"><a
