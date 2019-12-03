@@ -250,6 +250,8 @@ public class ArticleController {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		long loginedId = (long) session.getAttribute("loginedMemberId");
+		param.put("loginedMemberId", loginedId);
 
 		param.put("id", id);
 

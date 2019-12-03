@@ -63,12 +63,12 @@ public class MemberServiceImpl implements MemberService {
 			msg = loginedMemberName + "님 안녕하세요";
 
 		} else {
-			resultCode = "S-1";
+			resultCode = "S-2";
 			msg = "관리자 접속";
 
 		}
-
-		return Maps.of("resultCode", resultCode, "msg", msg, "loginedMemberId", loginedMemberId);
+		return Maps.of("resultCode", resultCode, "msg", msg, "loginedMemberId", loginedMemberId, "loginedMemberName",
+				loginedMemberName);
 	}
 
 	@Override
@@ -113,7 +113,7 @@ public class MemberServiceImpl implements MemberService {
 
 	public Map<String, Object> searchId(Map<String, Object> param) {
 		Member member = memberDao.searchId(param);
-		System.out.println(member.getLoginId());
+		System.out.println("member.getLoginId() : " + member.getLoginId());
 		String msg = null;
 		String resultCode = null;
 		MailHandler mail;

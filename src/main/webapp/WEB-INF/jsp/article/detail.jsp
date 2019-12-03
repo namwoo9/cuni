@@ -106,7 +106,7 @@
 <div class="list-1 table-common con article-replies-list">
 	<table>
 		<colgroup>
-			<col width="80">
+			<col width="70">
 			<col width="120">
 			<col width="180">
 			<col>

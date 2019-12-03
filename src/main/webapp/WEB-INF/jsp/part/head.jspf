@@ -46,20 +46,23 @@
 </script>
 </head>
 <body>
-<!-- 	<div style="text-align: center;"> -->
-<!-- 		<img -->
-<!-- 			src="http://mblogthumb3.phinf.naver.net/MjAxNzAyMTFfMTY4/MDAxNDg2NzQ2OTkyNTAx.BOYzN9z9WhWnonTvB6RYWb_sazwm5kpNp0TXkbwJz2cg.dCuGjsRKaf3YJZ8geN_vKoTNMBwDDKpnzMS6Hqs3LNIg.JPEG.dnjsrnr99/1486746897738.jpeg?type=w800" -->
-<!-- 			alt=""> -->
-<!-- 	</div> -->
-	<c:if test="${loginedMember != null}">
+	<!-- 	<div style="text-align: center;"> -->
+	<!-- 		<img -->
+	<!-- 			src="http://mblogthumb3.phinf.naver.net/MjAxNzAyMTFfMTY4/MDAxNDg2NzQ2OTkyNTAx.BOYzN9z9WhWnonTvB6RYWb_sazwm5kpNp0TXkbwJz2cg.dCuGjsRKaf3YJZ8geN_vKoTNMBwDDKpnzMS6Hqs3LNIg.JPEG.dnjsrnr99/1486746897738.jpeg?type=w800" -->
+	<!-- 			alt=""> -->
+	<!-- 	</div> -->
 
-		<div class="top-bar con margin-top-size-1 click">
+	<!-- 로그인 했을 시 쿠니 최상단 닉네임 표출-->
+	<c:if test="${loginedMember != null}">
+		<div class="top-bar con"
+			style="float: right; position: absolute; right: 20%; top: 15px;">
 			<a href="/member/myPage"
-				style="text-decoration: none; color: inherit">${loginedMember.name}님</a>
+				style="text-decoration: none; color: inherit;">${loginedMember.name}님</a>
 		</div>
 
 	</c:if>
-	<div class="logo-bar con">
+	<!-- cuni 메뉴 바 -->
+	<div class="logo-bar con"">
 		<h1>
 			<c:out value="${logoText}" />
 			-
@@ -100,8 +103,8 @@
 								class="block btn-a">글 삭제</a></li>
 						</c:if>
 					</c:if>
-<!-- 					<li class="cell margin-right-size-1"><a href="/member/myPage" -->
-<!-- 						class="block btn-a">마이페이지</a></li> -->
+					<!-- 					<li class="cell margin-right-size-1"><a href="/member/myPage" -->
+					<!-- 						class="block btn-a">마이페이지</a></li> -->
 					<li class="cell margin-right-size-1"><a
 						href="/member/modify?id=${member.id}" class="block btn-a">회원정보수정</a></li>
 					<li class="cell margin-right-size-1"><a

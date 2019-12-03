@@ -131,7 +131,7 @@ public class MemberController {
 //		}
 //
 		name = name.trim();
-//
+//  
 //		if (name.length() == 0 && name.matches("[0-9|a-z|A-Z|가-힣|]*")) {
 //			response.getWriter().append("<script> alert('title을 입력해주세요.'); history.back(); </script>");
 //			return name;

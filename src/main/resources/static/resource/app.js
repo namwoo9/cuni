@@ -71,7 +71,7 @@ function Article__loadNewReplies() {
 				form['submit-btn'].disabled = false;
 			}
 			
-			setTimeout(Article__loadNewReplies, 1000);
+			setTimeout(Article__loadNewReplies, 2000);
 		}
 	);
 }

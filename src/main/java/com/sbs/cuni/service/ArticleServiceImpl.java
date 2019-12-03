@@ -118,37 +118,27 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	public Map<String, Object> updateReply(Map<String, Object> args) {
+		ArticleReply articleReply = articleDao.getReply(CUtil.getAsLong(args.get("id")));
 
-		Map<String, Object> rs = new HashMap<String, Object>();
-
-		articleDao.modifyReply(args);
-
-		long id = (long) args.get("id");
-
-		rs.put("resultCode", "S-1");
-		rs.put("msg", id + "번 댓글이 수정되었습니다.");
-
-		return rs;
-	}
-
-	public Map<String, Object> delete(Map<String, Object> args) {
-
-		Map<String, Object> rs = new HashMap<String, Object>();
+		long memberId = (long) args.get("loginedMemberId");
+		String msg = "";
+		String resultCode = "";
 
 		long id = (long) args.get("id");
 
-		articleDao.delete(id);
+		if (articleReply == null) {
+			msg = "존재하지 않는 댓글 정보";
+			resultCode = "F-2";
+		} else if (articleReply.getMemberId() != memberId) {
+			msg = "권한이 없습니다.";
+			resultCode = "F-1";
+		} else {
+			articleDao.modifyReply(args);
+			msg = id + "번 글을 수정했습니다.";
+			resultCode = "S-1";
+		}
 
-		articleDao.deleteReplies(id);
-
-		rs.put("resultCode", "S-1");
-		rs.put("msg", id + "번 게시물이 삭제되었습니다.");
-
-		return rs;
-	}
-
-	public ArticleReply getReply(long id) {
-		return getReply(Maps.of("id", id));
+		return Maps.of("msg", msg, "resultCode", resultCode);
 	}
 
 	public Map<String, Object> deleteReply(Map<String, Object> param) {
@@ -173,6 +163,26 @@ public class ArticleServiceImpl implements ArticleService {
 		}
 
 		return Maps.of("msg", msg, "resultCode", resultCode);
+	}
+
+	public Map<String, Object> delete(Map<String, Object> args) {
+
+		Map<String, Object> rs = new HashMap<String, Object>();
+
+		long id = (long) args.get("id");
+
+		articleDao.delete(id);
+
+		articleDao.deleteReplies(id);
+
+		rs.put("resultCode", "S-1");
+		rs.put("msg", id + "번 게시물이 삭제되었습니다.");
+
+		return rs;
+	}
+
+	public ArticleReply getReply(long id) {
+		return getReply(Maps.of("id", id));
 	}
 
 	@Override
