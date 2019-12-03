@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -26,21 +27,25 @@ public class ChatController {
 
 	@RequestMapping("/chat/addMessage")
 	@ResponseBody
-	public Map addMessage(String writer, String body) {
+	public String addMessage(String writer, String body, Model model) {
 		// 3가지
 		// 번호
 		// 작성자
 		// 내용
+		StringBuilder sb = new StringBuilder();
+		writer = writer.trim();
+		if (writer.length() == 0) {
+			sb.append("<script>");
+			sb.append(" alert('이름을 입력하세요.');");
+			sb.append(" location.href='/chat/main';");
+			sb.append("</script>");
+			return sb.toString();
+		}
 		long id = messages.size();
 		ChatMessage newChatMessage = new ChatMessage(id, writer, body);
 		messages.add(newChatMessage);
 
-		Map rs = new HashMap<String, Object>();
-		rs.put("msg", "메세지가 입력되었습니다.");
-		rs.put("resultCode", "S-1");
-		rs.put("addedMessage", newChatMessage);
-
-		return rs;
+		return sb.toString();
 	}
 
 	@RequestMapping("/chat/getAllMessages")

@@ -7,6 +7,13 @@ function Chat__sendMessage() {
     
     메세지 = 메세지.trim(); // 메시지 양끝에 있는 공백제거
     
+    chatWriter = chatWriter.trim();
+    
+    if (chatWriter == '') {
+    	alert('이름을 입력하세요');
+    	location.href="/chat/main";
+    	return false;
+    }
     // 메세지 변수에 들어있는 값이 ''와 같다면
     if ( 메세지 == '' ) {
         // 함수를 더 이상 진행시키지 않고 여기서 종료시킨다.

@@ -85,10 +85,10 @@
 				<c:if test="${isLogined}">
 					<c:if test="${loginedMember.permissionLevel > 0}">
 						<li class="cell margin-right-size-1"><a
-							href="/article/add?boardId=1" class="block btn-a">공지사항 글 작성</a></li>
+							href="/article/add?boardId=1" class="block btn-a">공지사항 작성</a></li>
 					</c:if>
 					<li class="cell margin-right-size-1"><a
-						href="/article/add?boardId=2" class="block btn-a">자유게시판 글 작성</a></li>
+						href="/article/add?boardId=2" class="block btn-a">자유게시판 작성</a></li>
 					<c:if
 						test="${loginedMemberId == article.memberId && isArticleModifyAvailable && param.id != null}">
 						<li class="cell margin-right-size-1"><a
