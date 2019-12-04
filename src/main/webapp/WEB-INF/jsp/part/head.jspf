@@ -43,6 +43,9 @@
 <link rel="stylesheet" href="/resource/app.css">
 <script>
 	var loginedMemberId = parseInt('${loginedMemberId}');
+	function fn_chat(){
+		// 화면전환
+	}
 </script>
 </head>
 <body>
@@ -76,7 +79,7 @@
 				<li class="cell margin-right-size-1"><a href="/"
 					class="block btn-a">홈</a></li>
 				<li class="cell margin-right-size-1"><a href="/chat/main"
-					class="block btn-a">실시간채팅</a></li>
+					class="block btn-a" onclick="fn_chat();">실시간채팅</a></li>
 				<li class="cell margin-right-size-1"><a
 					href="/article/list?boardId=1" class="block btn-a">공지시항</a></li>
 				<li class="cell margin-right-size-1"><a

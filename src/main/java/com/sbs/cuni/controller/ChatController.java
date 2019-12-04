@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -27,16 +26,23 @@ public class ChatController {
 
 	@RequestMapping("/chat/addMessage")
 	@ResponseBody
-	public String addMessage(String writer, String body, Model model) {
+	public String addMessage(String writer, String body) {
 		// 3가지
 		// 번호
 		// 작성자
 		// 내용
 		StringBuilder sb = new StringBuilder();
 		writer = writer.trim();
+		body = body.trim();
 		if (writer.length() == 0) {
 			sb.append("<script>");
-			sb.append(" alert('이름을 입력하세요.');");
+			sb.append(" alert('닉네임을 입력하세요.');");
+			sb.append(" location.href='/chat/main';");
+			sb.append("</script>");
+			return sb.toString();
+		} else if (body.length() == 0) {
+			sb.append("<script>");
+			sb.append(" alert('내용을 입력하세요.');");
 			sb.append(" location.href='/chat/main';");
 			sb.append("</script>");
 			return sb.toString();

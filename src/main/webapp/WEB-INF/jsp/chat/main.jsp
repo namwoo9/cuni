@@ -16,7 +16,9 @@
 <body>
 	<div id="chat-room">
 		<div class="message-box" id="style-1">
-			<div class="message-group" data-date-str="2019년 07월 10일 수요일"></div>
+			<div class="message-group" data-date-str="2019년 07월 10일 수요일">
+				
+			</div>
 		</div>
 		<div class="input-box">
 			<input type="text" id="text-input">

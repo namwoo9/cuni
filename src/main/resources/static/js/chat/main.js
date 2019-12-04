@@ -1,16 +1,33 @@
-var chatWriter = prompt('당신의 이름을 입력해주세요.');
 
+var chatWriter = prompt('당신의 닉네임을 입력해주세요.');
+alert('${loginedMember.name}');
+for (var i = 0; i < chatWriter.length; i++) {
+	ch = chatWriter.charAt(i);
+	if (!(ch >= '가' && ch <= '힣') && !(ch >= 'a' && ch <= 'z')
+			&& !(ch >= 'A' && ch <= 'Z') && !(ch >= '0' && ch <= '9')) {
+		alert('닉네임에 자음과 특수문자를 사용하실 수 없습니다.');
+		location.href="/chat/main";
+	}
+}
+if (chatWriter <= 0) {
+	alert('닉네임을 입력해주세요');
+	location.href="/chat/main";
+}
+// if (chatWriter <= 0) {
+// alert('공백을 입력할 수 없습니다.');
+// history.back();
+// }
 function Chat__sendMessage() {
     // val()은 엘리먼트가 가지고 있는 value 속성의 값을 가져온다.
     var 메세지 = $('#chat-room .input-box #text-input').val();
-
+    
     
     메세지 = 메세지.trim(); // 메시지 양끝에 있는 공백제거
     
     chatWriter = chatWriter.trim();
     
     if (chatWriter == '') {
-    	alert('이름을 입력하세요');
+    	alert('닉네임을 입력하세요');
     	location.href="/chat/main";
     	return false;
     }
@@ -21,7 +38,7 @@ function Chat__sendMessage() {
         $('#chat-room .input-box #text-input').focus();
         return false;
     }
-    
+    	
     $.post(
     	'./addMessage',
     	{
@@ -36,7 +53,7 @@ function Chat__sendMessage() {
     
     // val(문자열)은 엘리먼트가 가지고 있는 value 속성의 값을 입력받은 문자열로 교체하라는 뜻입니다.
     $('#chat-room .input-box #text-input').val('');
-    $('#chat-room .input-box #text-input').focus();
+      $('#chat-room .input-box #text-input').focus();
 }
 
 var Chat__lastReceivedMessageId = -1;
@@ -55,6 +72,7 @@ function Chat__loadNewMessages() {
 			}
 			
 			setTimeout(Chat__loadNewMessages, 200);
+			
 		}
 	);
 }
@@ -64,7 +82,7 @@ function Chat__drawMessage(message) {
 	var writer = message.writer;
 	
 	var whoClassName = 'mine';
-	
+
 	if ( writer != chatWriter ) {
 		whoClassName = 'other';
 	}

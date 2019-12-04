@@ -35,7 +35,7 @@ public class MemberController {
 	@RequestMapping("member/doLogin")
 	public String doLogin(@RequestParam Map<String, Object> param, HttpSession session, Model model) {
 		Map<String, Object> rs = memberService.login(param);
-
+`
 		String resultCode = (String) rs.get("resultCode");
 		String msg = (String) rs.get("msg");
 
