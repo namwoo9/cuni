@@ -154,7 +154,7 @@
 				<tr>
 					<th>이메일</th>
 					<td><input type="email" name="email"
-						placeHolder="이메일을 입력해주세요." maxlength="20"></td>
+						placeHolder="이메일 인증을 받으셔야 로그인 하실 수 있습니다." maxlength="20"></td>
 				</tr>
 				<tr>
 					<th>가입</th>

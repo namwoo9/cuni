@@ -15,7 +15,7 @@ function Article__doAddReply(form) {
 		body : form.body.value,
 		articleId : articleId
 	}, function(data) {
-		
+		Article__loadNewReplies();
 	}, 'json');
 
 	form.body.value = '';
@@ -71,7 +71,7 @@ function Article__loadNewReplies() {
 				form['submit-btn'].disabled = false;
 			}
 			
-			setTimeout(Article__loadNewReplies, 2000);
+			// setTimeout(Article__loadNewReplies, 2000);
 		}
 	);
 }
