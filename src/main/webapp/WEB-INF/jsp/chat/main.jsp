@@ -1,6 +1,11 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.*"%>
+<%@ page import="com.sbs.cuni.dto.Member"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,16 +17,27 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/chat/main.js"></script>
+<script>
+	function goTop() {
+		// 		$(window).scrollTop(0);
+		// 		$('html, body').scrollTop(0);
+		// 		$('#chat-room').scrollTop(0);
+		$('.message-box').scrollTop(0);
+	}
+</script>
 </head>
 <body>
+
 	<div id="chat-room">
 		<div class="message-box" id="style-1">
-			<div class="message-group" data-date-str="2019년 07월 10일 수요일"></div>
+			<div class="message-group" data-date-str="${loginedMember.name}님"></div>
 		</div>
 		<div class="input-box">
 			<input type="text" id="text-input">
 			<div class="btn-plus">
-				<i class="fa fa-plus" aria-hidden="true"></i>
+				<button type="button" onclick="goTop()">Top</button>
+				<a href="/"><button type="button" class="home">Home</button></a> <i
+					class="fa fa-plus" aria-hidden="true"></i>
 			</div>
 			<div class="btn-emo">
 				<i class="fa fa-smile-o" aria-hidden="true"></i>

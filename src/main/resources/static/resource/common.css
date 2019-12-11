@@ -119,6 +119,8 @@ html, body {
 	border: 1px solid black;
 	/*테두리 패딩*/
 	padding: 10px;
+	
+	
 }
 
 .table-common table input[type="text"], .table-common table input[type="password"],
@@ -126,5 +128,6 @@ html, body {
 	width: 90%;
 	padding: 10px;
 	font-size: 1rem;
+	
 	/*테이블 텍스트창 */
 }

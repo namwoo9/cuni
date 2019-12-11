@@ -161,6 +161,16 @@ body, html {
 	background-color: #d1d1d1;
 }
 
+.btn-plus>button {
+	width: 100%;
+	padding: 6.5px;
+}
+
+.btn-plus>a>button {
+	width: 100%;
+	padding: 6.5px;
+}
+
 #chat-room .input-box .btn-plus>i {
 	position: absolute;
 	top: 50%;

@@ -177,6 +177,8 @@ function Article__drawReply(reply) {
 	
 	var $html = $(html);
     
+	
+	
     $('.article-replies-list tbody').prepend($html);
     
     setTimeout(function() {

@@ -1,17 +1,9 @@
+ 
+var chatWriter = prompt('닉네임을 입력해주세요');
 
-var chatWriter = prompt('랜덤채팅에 오신 것을 환영합니다.', '원하는 닉네임을 입력해주세요.');
 if (chatWriter == null) {
 	location.href="/";
 }
-for (var i = 0; i < chatWriter.length; i++) {
-	ch = chatWriter.charAt(i);
-	if (!(ch >= '가' && ch <= '힣') && !(ch >= 'a' && ch <= 'z')
-			&& !(ch >= 'A' && ch <= 'Z') && !(ch >= '0' && ch <= '9')) {
-		alert('올바른 닉네임을 입력해주세요.');
-		location.href="/chat/main";
-	}
-}
-
 if (chatWriter <= 0) {
 	alert('닉네임을 입력해주세요');
 	location.href="/chat/main";
@@ -19,6 +11,16 @@ if (chatWriter <= 0) {
 	alert('두 글자 이상 입력해주세요');
 	location.href="/chat/main";
 }
+//for (var i = 0; i < chatWriter.length; i++) {
+//	ch = chatWriter.charAt(i);
+//	if (!(ch >= '가' && ch <= '힣') && !(ch >= 'a' && ch <= 'z')
+//			&& !(ch >= 'A' && ch <= 'Z') && !(ch >= '0' && ch <= '9')) {
+//		alert('올바른 닉네임을 입력해주세요.');		
+//		location.href="/chat/main";	
+//	}
+//	
+//}
+
 
 // $('.data-date-str').contents().wrap('<a href="/"
 // class="data-date-str"></a>');
