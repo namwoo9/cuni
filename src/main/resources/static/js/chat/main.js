@@ -1,25 +1,24 @@
- 
+ 	
 var chatWriter = prompt('닉네임을 입력해주세요');
 
+chatWriter = chatWriter.trim();
 if (chatWriter == null) {
 	location.href="/";
 }
 if (chatWriter <= 0) {
-	alert('닉네임을 입력해주세요');
+	alert('공백은 사용 하실 수 없습니다');
 	location.href="/chat/main";
 } else if (chatWriter.length < 2) {
 	alert('두 글자 이상 입력해주세요');
 	location.href="/chat/main";
 }
-//for (var i = 0; i < chatWriter.length; i++) {
-//	ch = chatWriter.charAt(i);
-//	if (!(ch >= '가' && ch <= '힣') && !(ch >= 'a' && ch <= 'z')
-//			&& !(ch >= 'A' && ch <= 'Z') && !(ch >= '0' && ch <= '9')) {
-//		alert('올바른 닉네임을 입력해주세요.');		
-//		location.href="/chat/main";	
-//	}
-//	
-//}
+for (var i = 0; i < chatWriter.length; i++) {
+	ch = chatWriter.charAt(i);
+	if (!(ch >= '가' && ch <= '힣') && !(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z') && !(ch >= '0' && ch <= '9')) {
+		alert('올바른 닉네임을 입력해주세요.');
+		location.href="/chat/main";
+	}
+}
 
 
 // $('.data-date-str').contents().wrap('<a href="/"

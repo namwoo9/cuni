@@ -9,6 +9,7 @@
 
 <h3 class="con">메인화면 입니다.</h3>
 
+
 <%-- <c:if test="${loginedMember != null}"> --%>
 <%-- 	<div class="con">${loginedMember.name}님 안녕하세요.</div> --%>
 <%-- </c:if> --%>

@@ -76,3 +76,21 @@
 .add-animation-item-now-deleting {
 	opacity: 0;
 }
+
+.toggleBG {
+	background: #CCCCCC;
+	width: 70px;
+	height: 30px;
+	border: 1px solid #CCCCCC;
+	border-radius: 15px;
+}
+
+.toggleFG {
+	background: #FFFFFF;
+	width: 30px;
+	height: 30px;
+	border: none;
+	border-radius: 15px;
+	position: relative;
+	left: 0px;
+}

@@ -24,6 +24,15 @@
 		// 		$('#chat-room').scrollTop(0);
 		$('.message-box').scrollTop(0);
 	}
+
+	function homeAsk() {
+		if (confirm("메인 게시판으로 이동하시겠습니까?") == true) { //확인
+			location.href = "/";
+		} else { //취소
+			return false;
+		}
+
+	}
 </script>
 </head>
 <body>
@@ -36,8 +45,8 @@
 			<input type="text" id="text-input">
 			<div class="btn-plus">
 				<button type="button" onclick="goTop()">Top</button>
-				<a href="/"><button type="button" class="home">Home</button></a> <i
-					class="fa fa-plus" aria-hidden="true"></i>
+				<button type="button" class="home" onclick="homeAsk();">Home</button>
+				<i class="fa fa-plus" aria-hidden="true"></i>
 			</div>
 			<div class="btn-emo">
 				<i class="fa fa-smile-o" aria-hidden="true"></i>
