@@ -26,8 +26,12 @@
 				<td><c:out value="${member.regDate}" /></td>
 			</tr>
 		</tbody>
+
 	</table>
 </div>
-
+<div class="con">
+	<button type="button"
+		onclick="location.href = '/member/modify?id=${member.id}';">회원정보수정</button>
+</div>
 
 <%@ include file="../part/foot.jspf"%>

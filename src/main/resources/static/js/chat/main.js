@@ -9,7 +9,7 @@ if (chatWriter <= 0) {
 	alert('공백은 사용 하실 수 없습니다');
 	location.href="/chat/main";
 } else if (chatWriter.length < 2) {
-	alert('두 글자 이상 입력해주세요');
+	alert('2자리 이상 입력해주세요');
 	location.href="/chat/main";
 }
 for (var i = 0; i < chatWriter.length; i++) {

@@ -110,7 +110,7 @@
 					<c:if test="${loginedMember.permissionLevel > 0}">
 						<li class="cell margin-right-size-1"><a
 							href="/article/add?boardId=1" class="block btn-a">공지사항 작성</a></li>
-					</c:if>
+					</c:if>	
 					<li class="cell margin-right-size-1"><a
 						href="/article/add?boardId=2" class="block btn-a">자유게시판 작성</a></li>
 					<c:if
@@ -130,8 +130,8 @@
 					</c:if>
 					<!-- 					<li class="cell margin-right-size-1"><a href="/member/myPage" -->
 					<!-- 						class="block btn-a">마이페이지</a></li> -->
-					<li class="cell margin-right-size-1"><a
-						href="/member/modify?id=${member.id}" class="block btn-a">회원정보수정</a></li>
+					<!-- 					<li class="cell margin-right-size-1"><a -->
+					<%-- 						href="/member/modify?id=${member.id}" class="block btn-a">회원정보수정</a></li> --%>
 					<li class="cell margin-right-size-1"><a
 						href="/member/doLogout" class="block btn-a">로그아웃</a></li>
 				</c:if>
