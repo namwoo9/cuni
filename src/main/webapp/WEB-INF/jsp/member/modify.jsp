@@ -110,8 +110,8 @@
 					<th>수정</th>
 					<td><input class="btn-a" type="submit" value="수정"> <input
 						class="btn-a" type="reset" value="취소"
-						onclick="location.href = '/';">
-					<button class="btn-a" type="button"
+						onclick="location.href = '/member/myPage?id=${member.id}';">
+						<button class="btn-a" type="button"
 							onclick="if ( confirm('정말 탈퇴하시겠습니까?') ) location.href = './doSecession'">회원탈퇴</button></td>
 
 				</tr>
