@@ -30,7 +30,9 @@
 	</table>
 </div>
 <div class="con">
-	<button type="button"
+	<button
+		style="border-radius: 4px; border: solid red 1px; cursor: pointer;"
+		type="button"
 		onclick="location.href = '/member/modify?id=${member.id}';">회원정보수정</button>
 </div>
 
