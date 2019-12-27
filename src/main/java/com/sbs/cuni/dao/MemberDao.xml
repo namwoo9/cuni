@@ -41,10 +41,10 @@
 
 	<select id="doubleCheck" parameterType="map"
 		resultType="Integer">
-	SELECT COUNT(*) FROM `member`
-	WHERE loginId = #{loginId} OR
-	email =
-	#{email}
+		SELECT COUNT(*) FROM `member`
+		WHERE loginId = #{loginId} OR
+		email =
+		#{email} OR name = #{name}
 	</select>
 
 	<insert id="addMember" parameterType="map">
@@ -78,6 +78,10 @@
 		emailAuthKey =
 		#{authKey}
 	</select>
+	<select id="checkOverId" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM `member` WHERE loginId = #{loginId}
+	</select>
+
 
 	<update id="updateAuthStatus" parameterType="map">
 		UPDATE `member`

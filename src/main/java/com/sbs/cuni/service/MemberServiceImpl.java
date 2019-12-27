@@ -96,7 +96,7 @@ public class MemberServiceImpl implements MemberService {
 						.append((String) param.get("email")).append("&authKey=").append((String) param.get("authKey"))
 						.append("' target='_blank'> 누르시면 메일 인증 페이지로 이동됩니다. </a>").toString());
 				mail.send();
-				msg = "회원가입에 성공했습니다.";
+				msg = "회원가입이 완료 되었습니다.";
 				resultCode = "S-2";
 			} catch (Exception e) {
 				msg = "회원가입에 실패했습니다.";
@@ -212,6 +212,12 @@ public class MemberServiceImpl implements MemberService {
 	public Map<String, Object> login(Map<String, Object> param, HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int userIdCheck(String loginId) {
+		// TODO Auto-generated method stub
+		return memberDao.checkOverId(loginId);
 	}
 
 }

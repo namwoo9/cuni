@@ -28,5 +28,7 @@ public interface MemberService {
 
 	Map<String, Object> login(Map<String, Object> param);
 
+	public int userIdCheck(String loginId);
+
 	
 }

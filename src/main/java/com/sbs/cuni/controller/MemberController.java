@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -63,6 +64,13 @@ public class MemberController {
 		return "member/join";
 	}
 
+	@RequestMapping(value = "/user/idCheck", method = RequestMethod.GET)
+	@ResponseBody
+	public int idCheck(@RequestParam("loginId") String loginId) {
+
+		return memberService.userIdCheck(loginId);
+	}
+	
 	@RequestMapping("member/doJoin")
 	public String doJoin(Model model, @RequestParam Map<String, Object> param, HttpSession session) {
 

@@ -6,6 +6,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
+<%
+	long loginedMemberId = (long) session.getAttribute("loginedMemberId");
+	String loginedMemberName = (String) session.getAttribute("loginedMemberName");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,11 +23,13 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/chat/main.js"></script>
 <script>
+<%-- 	alert(<%=loginedMemberId%>); --%>
 	function goTop() {
 		// 		$(window).scrollTop(0);
 		// 		$('html, body').scrollTop(0);
 		// 		$('#chat-room').scrollTop(0);
 		$('.message-box').scrollTop(0);
+// 		alert('${loginedMember.name}');
 	}
 
 	function homeAsk() {

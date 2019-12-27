@@ -7,125 +7,153 @@
 <c:set var="pageTitle" value="회원가입" />
 <%@ include file="../part/head.jspf"%>
 
-<script>
-	var joinFormSubmited = false;
 
-	function submitJoinForm(form) {
-		if (joinFormSubmited) {
-			alert('처리중입니다.');
-			return false;
-		}
-
-		var emailP = /\w+@\w+\.\w+\.?\w*/;
-
-		form.loginId.value = form.loginId.value.trim();
-
-		for (var i = 0; i < form.loginId.value.length; i++) {
-			ch = form.loginId.value.charAt(i)
-			if (!(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z')
-					&& !(ch >= '0' && ch <= '9')) {
-				alert('아이디는 영문과 숫자만 입력 가능합니다.');
-				form.loginId.value = '';
-				form.loginId.focus();
-				return false;
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+/*
+$(document).on('change', '#name', function(){
+	fn_test();
+});
+function fn_test(){
+	var name = $('#name').val();
+	alert('dd');
+	$.ajax({
+		url : '${pageContext.request.contextPath}/user/idCheck?loginId='+ loginId,
+		type : 'get',
+		success : function(data) {
+			console.log("1 = 중복o / 0 = 중복x : "+ data);							
+			
+			if (data == 1) {
+					// 1 : 아이디가 중복되는 문구
+					$("#id_check").text("사용중인 아이디입니다 :p");
+					$("#id_check").css("color", "red");
+					$("#reg_submit").attr("disabled", false);
+				} else {
+					
+					if(idJ.test(loginId)){
+						// 0 : 아이디 길이 / 문자열 검사
+						$("#id_check").text("");
+						$("#reg_submit").attr("disabled", false);
+			
+					} else if(loginId == ""){
+						
+						$('#id_check').text('아이디를 입력해주세요 :)');
+						$('#id_check').css('color', 'red');
+						$("#reg_submit").attr("disabled", false);				
+						
+					} else {
+						
+						$('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
+						$('#id_check').css('color', 'red');
+						$("#reg_submit").attr("disabled", false);
+					}
+					
+				}
+			}, error : function() {
+					console.log("실패");
 			}
-		}
-		// 	 숫자도 가능하게 하려면	!(ch >= '0' && ch <= '9')
+		});
+}
+*/
+// 아이디 유효성 검사(1 = 중복 / 0 != 중복)
+// $(document).ready(function(){
+	
+// });
 
-		if (form.loginId.value.length == 0) {
-			alert('아이디를 입력해주세요');
-			form.loginId.focus();
-			return false;
-		}
+// alert("11")
+$(function(){
+	$("#loginId").blur(function() {
+		// id = "id_reg" / name = "userId"
+		var loginId = $('#loginId').val();
+		var loginIdCheck = RegExp(/^[A-Za-z0-9_\-]{5,20}$/);
+		$.ajax({	
+			url : '${pageContext.request.contextPath}/user/idCheck?loginId='+ loginId,
+			type : 'get',
+			success : function(data) {
+				console.log("1 = 중복o / 0 = 중복x : "+ data);							
+				if (data == 1) {
+						// 1 : 아이디가 중복되는 문구
+						$('#loginId').focus();
+						$("#id_check").text("사용중인 아이디입니다");
+						$("#id_check").css("color", "red");
+						$("#reg_submit").attr("disabled", true);
+					} else {
+						$("#id_check").text("");
+					}
+				if (!loginIdCheck.test($('#loginId').val())) {
+					
+					$('#loginId').focus();		
+					$("#id_check").text("영문, 숫자로 5글자 이상 입력 해주세요.");
+					$("#id_check").css("color", "red");
+				} 
+				if (data == 0 && loginIdCheck.test($('#loginId').val())) {
+					$("#id_check").text("사용 가능한 아이디입니다.");
+					$("#id_check").css("color", "blue");
+				}
+				if(loginId == ""){
+					$('#loginId').val('');
+					$('#loginId').focus();		
+					$('#id_check').text('아이디를 입력해주세요');
+					$('#id_check').css('color', 'red');
+					$("#reg_submit").attr("disabled", true);				
+				}
+				}, error : function() {
+						console.log("실패");
+				}
+			});
+		});
 
-		if (form.loginId.value.length <= 3) {
-			alert('4자리 이상 입력해주세요');
-			form.loginId.value = '';
-			form.loginId.focus();
-			return false;
-		}
-
-		form.loginPw.value = form.loginPw.value.trim();
-		if (form.loginPw.value.length == 0) {
-			alert('비밀번호를 입력해주세요.');
-			form.loginPw.focus();
-			return;
-		}
-
-		form.loginPw.value = form.loginPw.value.trim();
-		if (form.loginPw.value.length < 4) {
-			alert('비밀번호를 4자리 이상 입력해주세요.');
-			form.loginPw.value = '';
-			form.loginPw.focus();
-			return;
-		}
-		form.loginPwConfirm.value = form.loginPwConfirm.value.trim();
-		if (form.loginPwConfirm.value.length == 0) {
-			alert('비밀번호 확인을 입력해주세요.');
-			form.loginPwConfirm.focus();
-			return;
-		}
-
-		if (form.loginPw.value != form.loginPwConfirm.value) {
-			alert('비밀번호가 같지 않습니다.');
-			form.loginPwConfirm.value = "";
-			form.loginPwConfirm.focus();
-			return;
-		}
-
-		form.name.value = form.name.value.trim();
-		if (form.name.value.length == 0) {
-			alert('닉네임을 입력해주세요.');
-			form.name.focus();
-			return;
-		}
-
-		for (var i = 0; i < form.name.value.length; i++) {
-			ch = form.name.value.charAt(i)
-			if (!(ch >= '가' && ch <= '힣') && !(ch >= 'a' && ch <= 'z')
-					&& !(ch >= 'A' && ch <= 'Z') && !(ch >= '0' && ch <= '9')) {
-				alert('닉네임에 특수문자를 사용하실 수 없습니다.');
-				form.name.value = '';
-				form.name.focus();
-				return false;
-			}
-		}
-		// 		var kor = /^[가-힣]+$/;
-		// 		var eng = /^[a-zA-Z]{4,10}$/;
-		// 		if (eng.test(form.name.value)) {
-		// 			alert('영어는 6글자 이하로 적어주세요'');
-		// 			form.name.value = '';
-		// 			form.name.focus();
-		// 			return false;
-		// 		}
-
-		if (form.name.value.length < 2) {
-			alert('2자리 이상 입력해주세요.');
-			form.name.value = "";
-			form.name.focus();
-			return;
+	$("#loginPw").blur(function() {
+		var loginPw = $(this).val();
+		var loginId = $('#loginId').val();
+		if(loginPw == ""){
+			$('#Pw_check').text('비밀번호를 입력해주세요');
+			$('#Pw_check').css('color', 'red');
+			$("#reg_submit").attr("disabled", true);
+		} else if (loginPw.length <= 3) {
+			$('#loginPw').val('');
+			$('#loginPw').focus();
+			$('#Pw_check').text('최소 4자리 입력해주세요');
+			$('#Pw_check').css('color', 'red');
+			$("#reg_submit").attr("disabled", true);
+		} else {
+			$('#Pw_check').text('');		
+			$("#reg_submit").attr("disabled", false);
 		}
 
-		form.email.value = form.email.value.trim();
-		if (form.email.value.length == 0) {
-			alert('이메일을 입력해주세요.');
-			form.email.focus();
-			return;
+		if (loginId == loginPw) {
+			$('#loginPw').val('');
+			$('#loginPw').focus();
+			$('#Pw_check').text('아이디와 비밀번호를 다르게 입력해주세요');
+			$('#Pw_check').css('color', 'red');
+			$("#reg_submit").attr("disabled", true);
 		}
+		// id = "id_reg" / name = "userId"
+	});
 
-		if (!email.match(emailP)) {
-			alert("이메일 형식에 맞지 않습니다.");
-			return false;
+	$("#loginPwConfirm").blur(function() {
+		var loginPwConfirm = $("#loginPwConfirm").val();
+		var loginPw = $("#loginPw").val();
+		if(loginPw != loginPwConfirm){
+			$('#loginPw').val('');
+			$('#loginPwConfirm').val('');
+			$('#loginPw').focus();
+			$('#Pwcf_check').text('비밀번호와 일치하지 않습니다.');
+			$('#Pwcf_check').css('color', 'red');
+			$("#reg_submit").attr("disabled", true);
+		} else {
+			$('#Pwcf_check').text('');
 		}
+	});
+});
+<!--유효성 검사-->
 
-		form.submit();
-		joinFormSubmited = true;
-	}
 </script>
 
 <div class="login-box con table-common">
 	<form action="./doJoin" method="POST"
 		onsubmit="submitJoinForm(this); return false;">
+		<!-- " -->
 		<table>
 			<colgroup>
 				<col width="150">
@@ -133,23 +161,29 @@
 			<tbody>
 				<tr>
 					<th>아이디</th>
-					<td><input type="text" name="loginId" autocomplete="off"
-						autofocus="autofocus" placeholder="아이디를 입력해주세요." maxlength="12"></td>
+					<td><input type="text" id="loginId" name="loginId"
+						autocomplete="off" autofocus="autofocus"
+						placeholder="아이디를 입력해주세요." maxlength="12" required>
+						<div class="check_font" id="id_check"></div></td>
 				</tr>
 				<tr>
 					<th>비밀번호</th>
-					<td><input type="password" name="loginPw"
-						placeholder="비밀번호를 입력해주세요." maxlength="12"></td>
+					<td><input type="password" id="loginPw" name="loginPw"
+						placeholder="비밀번호를 입력해주세요." maxlength="12" required>
+						<div class="check_font" id="Pw_check"></div></td>
 				</tr>
 				<tr>
 					<th>비밀번호 확인</th>
-					<td><input type="password" name="loginPwConfirm"
-						placeholder="비밀번호 확인을 입력해주세요." maxlength="12"></td>
+					<td><input type="password" id="loginPwConfirm"
+						name="loginPwConfirm" placeholder="비밀번호 확인을 입력해주세요."
+						maxlength="12" required>
+						<div class="check_font" id="Pwcf_check"></div></td>
 				</tr>
 				<tr>
 					<th>닉네임</th>
-					<td><input type="text" name="name" autocomplete="off"
-						placeholder="닉네임을 입력해주세요." maxlength="10"></td>
+					<td><input type="text" id="name" name="name"
+						autocomplete="off" placeholder="닉네임을 입력해주세요." maxlength="10"
+						required></td>
 				</tr>
 				<tr>
 					<th>이메일</th>
@@ -158,13 +192,12 @@
 				</tr>
 				<tr>
 					<th>가입</th>
-					<td><input class="btn-a" type="submit" value="가입"> <input
-						class="btn-a" type="reset" value="취소"
+					<td><input class="btn-a" id="reg_submit" type="submit"
+						value="가입"> <input class="btn-a" type="reset" value="취소"
 						onclick="location.href = '/';"></td>
 				</tr>
 			</tbody>
 		</table>
 	</form>
 </div>
-
 <%@ include file="../part/foot.jspf"%>
