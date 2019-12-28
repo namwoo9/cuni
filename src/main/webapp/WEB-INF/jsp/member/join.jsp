@@ -145,6 +145,16 @@ $(function(){
 			$('#Pwcf_check').text('');
 		}
 	});
+
+	$("#email").blur(function() {
+		var email = $("#email").val();	
+		if(email == null){
+			$('#email').focus();
+			$('#check_font').text('이메일을 입력하세요');
+			$('#check_font').css('color', 'red');
+			$("#reg_submit").attr("disabled", true);
+		}
+	});
 });
 <!--유효성 검사-->
 
@@ -187,8 +197,10 @@ $(function(){
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td><input type="email" name="email"
-						placeHolder="이메일 인증을 받으셔야 로그인 하실 수 있습니다." maxlength="20"></td>
+					<td><input type="email" id="email" name="email"
+						placeHolder="이메일 인증을 받으셔야 로그인 하실 수 있습니다." maxlength="20">
+						<div class="check_font" id="email_check"></div>
+						</td>
 				</tr>
 				<tr>
 					<th>가입</th>
