@@ -7,6 +7,11 @@
 <%@ include file="../part/head.jspf"%>
 <script>
 	var articleId = parseInt('${param.id}');
+
+	$(function() {
+		Article__loadNewReplies();
+	});
+		
 </script>
 
 <script>

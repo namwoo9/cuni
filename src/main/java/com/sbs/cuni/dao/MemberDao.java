@@ -31,4 +31,6 @@ public interface MemberDao {
 
 	public int checkOverId(String loginId);
 
+	public int checkOverName(String name);
+
 }

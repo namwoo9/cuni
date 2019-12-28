@@ -81,6 +81,10 @@
 	<select id="checkOverId" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM `member` WHERE loginId = #{loginId}
 	</select>
+	
+	<select id="checkOverName" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM `member` WHERE name = #{name}
+	</select>
 
 
 	<update id="updateAuthStatus" parameterType="map">

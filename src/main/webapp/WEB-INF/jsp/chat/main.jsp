@@ -1,15 +1,9 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.sbs.cuni.dto.Member"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
-<%
-	long loginedMemberId = (long) session.getAttribute("loginedMemberId");
-	String loginedMemberName = (String) session.getAttribute("loginedMemberName");
-%>
 
 <!DOCTYPE html>
 <html>
@@ -21,6 +15,12 @@
 <link rel="stylesheet" href="/css/chat/main.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+var chatWriter = '${loginedMember.getName()}';
+//var chatWriter = '${loginedMemberName}';
+
+</script>
+
 <script src="/js/chat/main.js"></script>
 <script>
 <%-- 	alert(<%=loginedMemberId%>); --%>

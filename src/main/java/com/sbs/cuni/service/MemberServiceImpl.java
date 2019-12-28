@@ -220,4 +220,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.checkOverId(loginId);
 	}
 
+	@Override
+	public int userNameCheck(String name) {
+		// TODO Auto-generated method stub
+		return memberDao.checkOverName(name);
+	}
+
 }

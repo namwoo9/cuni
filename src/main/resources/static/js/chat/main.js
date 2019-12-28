@@ -1,14 +1,5 @@
 
-var chatWriter = prompt('닉네임을 입력해주세요');
 
-var name = parseInt('${loginedMemberId}');
-// alert('${loginedMember.name}');
-alert(name); 
-
-
-var wew = $('loginedMemberName');
-alert(wew);
-console.log('객체 : ' , wew);
 chatWriter = chatWriter.trim();
 if (chatWriter == null) {
 	location.href="/";

@@ -30,5 +30,7 @@ public interface MemberService {
 
 	public int userIdCheck(String loginId);
 
+	public int userNameCheck(String name);
+
 	
 }

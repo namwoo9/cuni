@@ -5,13 +5,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sbs.cuni.dto.ChatMessage;
+import com.sbs.cuni.dto.Member;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
+@Slf4j
 public class ChatController {
 	private List<ChatMessage> messages;
 
@@ -20,7 +27,11 @@ public class ChatController {
 	}
 
 	@RequestMapping("/chat/main")
-	public String showMain() {
+	public String showMain(HttpServletRequest req, Model model) {
+		Member loginedMember = (Member)req.getAttribute("loginedMember");
+		
+		model.addAttribute("loginedMemberName", loginedMember.getName());
+		
 		return "chat/main";
 	}
 

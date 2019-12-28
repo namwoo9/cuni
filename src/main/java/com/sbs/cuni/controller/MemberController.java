@@ -71,6 +71,13 @@ public class MemberController {
 		return memberService.userIdCheck(loginId);
 	}
 	
+	@RequestMapping(value = "/user/nameCheck", method = RequestMethod.GET)
+	@ResponseBody
+	public int nameCheck(@RequestParam("name") String name) {
+
+		return memberService.userNameCheck(name);
+	}
+	
 	@RequestMapping("member/doJoin")
 	public String doJoin(Model model, @RequestParam Map<String, Object> param, HttpSession session) {
 
@@ -115,10 +122,7 @@ public class MemberController {
 	}
 
 	@RequestMapping("member/modify")
-	public String modify(Model model, HttpSession session) {
-		long loginedMemberId = (long) session.getAttribute("loginedMemberId");
-		Member member = memberService.getOne(loginedMemberId);
-		model.addAttribute("member", member);
+	public String modify() {
 		return "member/modify";
 	}
 

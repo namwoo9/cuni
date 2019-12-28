@@ -85,11 +85,11 @@
 			<tbody>
 				<tr>
 					<th>닉네임</th>
-					<td><input type="text" name="name" value="${member.name}"></td>
+					<td><input type="text" name="name" value="${loginedMember.name}"></td>
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td><input type="email" name="email" value="${member.email}"></td>
+					<td><input type="email" name="email" value="${loginedMember.email}"></td>
 				</tr>
 				<!-- 				<tr> -->
 				<!-- 					<th>기존 비밀번호</th> -->
@@ -110,7 +110,7 @@
 					<th>수정</th>
 					<td><input class="btn-a" type="submit" value="수정"> <input
 						class="btn-a" type="reset" value="취소"
-						onclick="location.href = '/member/myPage?id=${member.id}';">
+						onclick="location.href = '/member/myPage?id=${loginedMember.id}';">
 						<button class="btn-a" type="button"
 							onclick="if ( confirm('정말 탈퇴하시겠습니까?') ) location.href = './doSecession'">회원탈퇴</button></td>
 

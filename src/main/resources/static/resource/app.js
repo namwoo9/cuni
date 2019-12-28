@@ -187,9 +187,9 @@ function Article__drawReply(reply) {
 };
 
 
-$(function() {
-	Article__loadNewReplies();
-});
+//$(function() {
+//	Article__loadNewReplies();
+//});
 
 
 
