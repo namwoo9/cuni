@@ -7,72 +7,69 @@
 <%@ include file="../part/head.jspf"%>
 
 <script>
-	function modifyFormSubmited(form) {
-		form.name.value = form.name.value.trim();
+var allClear = {
+		name : false,
+};
+	function update_reg_submit_disabled() {
+		$('#reg_submit').prop('disabled', true);
 
-		if (form.name.value.length == 0) {
-			alert('닉네임을 입력해주세요');
-			form.name.focus();
-			return false;
-		}
-
-		for (var i = 0; i < form.name.value.length; i++) {
-			ch = form.name.value.charAt(i)
-			if (!(ch >= '가' && ch <= '힣') && !(ch >= 'a' && ch <= 'z')
-					&& !(ch >= 'A' && ch <= 'Z') && !(ch >= '0' && ch <= '9')) {
-				alert('닉네임에 특수문자, 공백을 사용하실 수 없습니다.');
-				form.name.value = '';
-				form.name.focus();
+		for ( var key in allClear) {
+			if (allClear[key] == false) {
 				return false;
 			}
 		}
+	$('#reg_submit').prop('disabled', false);
+}
 
-		if (form.name.value.length < 2) {
-			alert('2자리 이상 입력해주세요');
-			form.name.focus();
-			return false;
+$(function(){
+	$("#name").blur(function() {
+		allClear['name'] = false;
+		update_reg_submit_disabled();
+		
+		// id = "id_reg" / name = "userId"
+		var name = $('#name').val();
+		name = name.trim();
+
+		if ( name.length > 0 ) {
+			var loginNameCheck = RegExp(/^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|\*]+$/);
+			$.ajax({	
+				url : '${pageContext.request.contextPath}/user/nameCheck?name='+ name,
+				type : 'get',
+				success : function(data) {
+					console.log("1 = 중복o / 0 = 중복x : "+ data);							
+					if (data == 1) {
+						// 1 : 아이디가 중복되는 문구
+						$('#name').focus();
+						$("#name_check").text("사용중인 닉네임입니다");
+						$("#name_check").css("color", "red");
+					}
+	 				if (!loginNameCheck.test($('#name').val())) {
+						$('#name').focus();		
+	 					$("#name_check").text("한글, 영문, 숫자만 입력 해주세요.");
+	 					$("#name_check").css("color", "red");
+	 				}
+	 				if (data == 0 && loginNameCheck.test($('#name').val())) {
+	 					$("#name_check").text("사용 가능한 닉네임 입니다.");
+	 					$("#name_check").css("color", "blue");
+	 					allClear['name'] = true;
+	 					update_reg_submit_disabled();
+	 				}
+					if(name == ""){
+						$('#name').val('');
+						$('#name').focus();		
+						$('#name_check').text('닉네임을 입력해주세요');
+						$('#name_check').css('color', 'red');
+					}
+				},
+				error : function() {
+					console.log("실패");
+				}
+			});
 		}
-
-		form.email.value = form.email.value.trim();
-
-		if (form.email.value.length == 0) {
-			alert('이메일을 입력해주세요');
-			form.email.focus();
-			return false;
-		}
-
-		form.afterPw.value = form.afterPw.value.trim();
-
-		if (form.afterPw.value.length == 0) {
-			alert('변경할 비밀번호를 입력해주세요');
-			form.afterPw.value = "";
-			form.afterPw.focus();
-			return false;
-		} else if (form.afterPw.value.length <= 3) {
-			alert('4자리 이상 입력해주세요');
-			form.afterPw.value = "";
-			form.afterPw.focus();
-			return false;
-		}
-
-		form.checkPw.value = form.checkPw.value.trim();
-
-		if (form.checkPw.value.length == 0) {
-			alert('비밀번호 확인 입력해주세요');
-			form.checkPw.focus();
-			return false;
-		}
-
-		if (form.afterPw.value != form.checkPw.value) {
-			alert('변경할 비밀번호와 일치하지 않습니다');
-			form.checkPw.value = "";
-			form.checkPw.focus();
-			return false;
-		}
-
-		form.submit();
-	}
+	});
+});
 </script>
+
 
 <div class="con table-common">
 	<form action="./doModify" method="POST"
@@ -80,17 +77,17 @@
 			(this); return false;">
 		<table>
 			<colgroup>
-				<col width="150">
+				<col width="170">
 			</colgroup>
 			<tbody>
 				<tr>
 					<th>닉네임</th>
-					<td><input type="text" name="name" value="${loginedMember.name}"></td>
+					<td><input type="text" id="name" name="name" value="${loginedMember.name}"><div class="check_font" id="name_check"></div></td>
 				</tr>
-				<tr>
-					<th>이메일</th>
-					<td><input type="email" name="email" value="${loginedMember.email}"></td>
-				</tr>
+<!-- 				<tr> -->
+<!-- 					<th>이메일</th> -->
+<%-- 					<td><input type="email" name="email" value="${loginedMember.email}"></td> --%>
+<!-- 				</tr> -->
 				<!-- 				<tr> -->
 				<!-- 					<th>기존 비밀번호</th> -->
 				<!-- 					<td><input type="password" name="beforePw"></td> -->
@@ -108,7 +105,7 @@
 
 				<tr>
 					<th>수정</th>
-					<td><input class="btn-a" type="submit" value="수정"> <input
+					<td><input class="btn-a" type="submit" value="수정" id="reg_submit"> <input
 						class="btn-a" type="reset" value="취소"
 						onclick="location.href = '/member/myPage?id=${loginedMember.id}';">
 						<button class="btn-a" type="button"
