@@ -1,25 +1,3 @@
-
-
-chatWriter = chatWriter.trim();
-if (chatWriter == null) {
-	location.href="/";
-}
-if (chatWriter <= 0) {
-	alert('공백은 사용 하실 수 없습니다');
-	location.href="/chat/main";
-} else if (chatWriter.length < 2) {
-	alert('2자리 이상 입력해주세요');
-	location.href="/chat/main";
-}
-for (var i = 0; i < chatWriter.length; i++) {
-	ch = chatWriter.charAt(i);
-	if (!(ch >= '가' && ch <= '힣') && !(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z') && !(ch >= '0' && ch <= '9')) {
-		alert('올바른 닉네임을 입력해주세요.');
-		location.href="/chat/main";
-	}
-}
-
-
 // $('.data-date-str').contents().wrap('<a href="/"
 // class="data-date-str"></a>');
 
@@ -32,11 +10,7 @@ function Chat__sendMessage() {
     
     chatWriter = chatWriter.trim();
     
-    if (chatWriter == '') {
-    	alert('닉네임을 입력하세요');
-    	location.href="/chat/main";
-    	return false;
-    }
+
     // 메세지 변수에 들어있는 값이 ''와 같다면
     if ( 메세지 == '' ) {
         // 함수를 더 이상 진행시키지 않고 여기서 종료시킨다.

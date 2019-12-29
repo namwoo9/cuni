@@ -212,8 +212,8 @@ $(function(){
 			
 			if(email == ''){
 				$('#email').focus();
-				$('#check_font').text('이메일을 정확히 입력하세요');
-				$('#check_font').css('color', 'red');				
+				$('#email_check').text('이메일을 정확히 입력하세요');
+				$('#email_check').css('color', 'red');				
 			}
 		}
 	});
